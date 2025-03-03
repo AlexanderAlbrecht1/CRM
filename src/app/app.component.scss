@@ -8,3 +8,41 @@
     cursor: pointer;
   }
 }
+
+.sidenav {
+  width: 300px;
+}
+
+.logo-container {
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(226, 226, 226, 0.5);
+  padding: 16px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  height: 56px;
+}
+
+.menu-items {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+
+  li {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    gap: 16px;
+    height: 48px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(226, 226, 226, 0.1) ;
+    }
+  }
+}
+
+
