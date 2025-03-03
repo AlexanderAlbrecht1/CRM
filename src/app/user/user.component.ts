@@ -22,9 +22,6 @@ export class UserComponent {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddUserComponent, {
-      height: '400px',
-      width: '600px',
-      // data: {name: this.name, animal: this.animal},
     });
 
     dialogRef.afterClosed().subscribe((result) => {
