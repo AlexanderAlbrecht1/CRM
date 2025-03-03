@@ -6,8 +6,8 @@
       Logo
     </div>
     <ul class="menu-items">
-      <li><mat-icon fontIcon="space_dashboard"></mat-icon>Dashboard</li>
-      <li><mat-icon fontIcon="person"></mat-icon>User</li>
+      <li routerLink="" routerLinkActive="router-link-active" ><mat-icon fontIcon="space_dashboard"></mat-icon>Dashboard</li>
+      <li routerLink="user" routerLinkActive="router-link-active" ><mat-icon fontIcon="person"></mat-icon>User</li>
     </ul>
 
 
@@ -19,6 +19,9 @@
       <span>Simple CRM</span>
     </mat-toolbar>
 
+    <div class="router-container">
+      <router-outlet></router-outlet>
+    </div>
 
 
   </div>
