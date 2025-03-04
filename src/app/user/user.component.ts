@@ -12,7 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
     MatIconModule,
     MatTooltipModule,
     MatDialogModule,
-    DialogAddUserComponent,
+    // DialogAddUserComponent,
   ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss',
