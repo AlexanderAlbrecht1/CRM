@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { User } from '../../models/user.class';
 import {MatCardModule} from '@angular/material/card';
 import { FirebaseService } from '../services/firebase.service';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
@@ -17,6 +18,7 @@ import { FirebaseService } from '../services/firebase.service';
     MatTooltipModule,
     MatDialogModule,
     MatCardModule,
+    CommonModule,
   ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss',
@@ -24,13 +26,15 @@ import { FirebaseService } from '../services/firebase.service';
 export class UserComponent {
 
   user = new User();
+  userList: User[] = [];
+
+  constructor(public dialog: MatDialog, private firebaseService: FirebaseService) {  }
 
 
-  constructor(public dialog: MatDialog, private firebaseService: FirebaseService) {}
 
-  getUserList() {
-    // return this.firebaseService.user
-    console.log(this.firebaseService.user);
+  getUserList(): User[] {
+    return this.firebaseService.user
+    // console.log(this.firebaseService.user);
 
   }
 
