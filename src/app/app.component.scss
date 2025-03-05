@@ -20,6 +20,9 @@
   height: 56px;
   display: flex;
   align-items: center;
+  background-image: url(../assets/img/logo2_head.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .mat-toolbar-row, .mat-toolbar-single-row {
