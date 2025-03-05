@@ -6,6 +6,7 @@ import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.compo
 import { MatDialog } from '@angular/material/dialog';
 import { User } from '../../models/user.class';
 import {MatCardModule} from '@angular/material/card';
+import { FirebaseService } from '../services/firebase.service';
 
 
 @Component({
@@ -25,7 +26,13 @@ export class UserComponent {
   user = new User();
 
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private firebaseService: FirebaseService) {}
+
+  getUserList() {
+    // return this.firebaseService.user
+    console.log(this.firebaseService.user);
+
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddUserComponent, {
