@@ -11,6 +11,9 @@ import {
 } from '@angular/material/core';
 // import { User } from '../../models/user.class';
 import { FormsModule } from '@angular/forms';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { CommonModule } from '@angular/common';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -22,20 +25,26 @@ import { FormsModule } from '@angular/forms';
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,
+    MatProgressBarModule,
+    CommonModule,
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './dialog-add-user.component.html',
   styleUrl: './dialog-add-user.component.scss',
 })
 export class DialogAddUserComponent {
-
-  constructor(public firebaseService: FirebaseService) {}
+  constructor(
+    public firebaseService: FirebaseService,
+    public dialogRef: MatDialogRef<DialogAddUserComponent>
+  ) {}
 
   // firestore = inject(Firestore);
   user = new User();
   birthDate: Date = new Date('');
+  loading: boolean = false;
 
   async saveUser() {
+    this.loading = true;
     this.user.birthDate = this.birthDate.getTime();
     console.log('user is', this.user);
 
@@ -48,6 +57,12 @@ export class DialogAddUserComponent {
       city: this.user.city,
       zipCode: this.user.zipCode,
     };
-    this.firebaseService.addUser(user)
+    this.firebaseService.addUser(user);
+    this.loading = false;
+    this.closeDialog();
+  }
+
+  closeDialog(): void {
+    this.dialogRef.close();
   }
 }

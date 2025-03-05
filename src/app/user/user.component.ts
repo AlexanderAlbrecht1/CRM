@@ -5,6 +5,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 import { MatDialog } from '@angular/material/dialog';
 import { User } from '../../models/user.class';
+import {MatCardModule} from '@angular/material/card';
+
 
 @Component({
   selector: 'app-user',
@@ -13,7 +15,7 @@ import { User } from '../../models/user.class';
     MatIconModule,
     MatTooltipModule,
     MatDialogModule,
-    // DialogAddUserComponent,
+    MatCardModule,
   ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss',
@@ -27,11 +29,6 @@ export class UserComponent {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddUserComponent, {
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-      //   this.animal = result;
     });
   }
 }
