@@ -59,6 +59,7 @@ export class DialogAddUserComponent {
       city: this.user.city,
       zipCode: this.user.zipCode,
       email: this.user.email,
+      id: this.user.id
     };
     this.firebaseService.addUser(user);
     this.loading = false;

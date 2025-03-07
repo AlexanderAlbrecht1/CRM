@@ -33,12 +33,15 @@ export class FirebaseService {
       this.user = [];
       list.forEach((element) => {
         this.user.push(this.setUserObject(element.data(), element.id));
+        console.log(element.id);
+
       });
     });
   }
 
   setUserObject(obj: any, id: string): User {
     return {
+      id: id || '',
       firstName: obj.firstName || '',
       lastName: obj.lastName || '',
       birthDate: obj.birthDate || '',
