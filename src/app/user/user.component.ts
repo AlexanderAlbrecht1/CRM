@@ -9,6 +9,7 @@ import {MatCardModule} from '@angular/material/card';
 import { FirebaseService } from '../services/firebase.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { UserDetailComponent } from '../user-detail/user-detail.component';
 
 
 @Component({
@@ -20,7 +21,7 @@ import { RouterLink } from '@angular/router';
     MatDialogModule,
     MatCardModule,
     CommonModule,
-    RouterLink
+    RouterLink,
   ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss',
