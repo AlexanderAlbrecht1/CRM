@@ -10,10 +10,11 @@ import {
   provideNativeDateAdapter,
 } from '@angular/material/core';
 // import { User } from '../../models/user.class';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CommonModule } from '@angular/common';
 import { MatDialogRef } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -27,6 +28,7 @@ import { MatDialogRef } from '@angular/material/dialog';
     FormsModule,
     MatProgressBarModule,
     CommonModule,
+    ReactiveFormsModule
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './dialog-add-user.component.html',
@@ -56,6 +58,7 @@ export class DialogAddUserComponent {
       address2: this.user.address2,
       city: this.user.city,
       zipCode: this.user.zipCode,
+      email: this.user.email,
     };
     this.firebaseService.addUser(user);
     this.loading = false;
@@ -65,4 +68,9 @@ export class DialogAddUserComponent {
   closeDialog(): void {
     this.dialogRef.close();
   }
+
+  emailFormControl = new FormControl('', [
+    // Validators.required,
+    Validators.email,
+  ]);
 }

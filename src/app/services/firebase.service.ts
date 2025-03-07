@@ -46,6 +46,7 @@ export class FirebaseService {
       address2 : obj.address2 || '',
       city: obj.city || '',
       zipCode: obj.zipCode || '',
+      email: obj.email || '',
     };
   }
 
