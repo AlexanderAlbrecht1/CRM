@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-detail',
@@ -10,4 +11,13 @@ import {MatCardModule} from '@angular/material/card';
 })
 export class UserDetailComponent {
 
+  singleUserId = '';
+
+  constructor(private route:ActivatedRoute){}
+
+  ngOnInit() {
+    this.singleUserId = this.route.snapshot.paramMap.get('id') || '';
+    console.log('id   ' + this.singleUserId);
+
+  }
 }
