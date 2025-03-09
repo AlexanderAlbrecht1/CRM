@@ -4,13 +4,14 @@ import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { User } from '../../models/user.class';
 import { query } from '@angular/fire/firestore';
 import { onSnapshot } from '@angular/fire/firestore';
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc } from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseService {
   user: User[] = [];
+  singleUser: any = {};
   firestore = inject(Firestore);
 
   unsubUser;
@@ -37,21 +38,18 @@ export class FirebaseService {
       this.user = [];
       list.forEach((element) => {
         this.user.push(this.setUserObject(element.data(), element.id));
-        console.log(element.id);
+        // console.log(element.data());
       });
     });
   }
 
-  // async subSingleUser(docId:string) {
+  // async subSingleUser(docId: string) {
   //   const docRef = doc(this.firestore, 'user', docId);
-  //   const docSnap = await getDoc(docRef);
-
-  //   if (docSnap.exists()) {
-  //     console.log('Document data:', docSnap.data());
-  //   } else {
-  //     // docSnap.data() will be undefined in this case
-  //     console.log('No such document!');
-  //   }
+  //   this.singleUser = await getDoc(docRef);
+  //   this.user = [];
+  //   this.user.push(this.setUserObject(this.singleUser.data(), docId));
+  //   console.log('Daten aus Firebaseservices:', this.user);
+  //   // return this.user;
   // }
 
   setUserObject(obj: any, id: string): User {

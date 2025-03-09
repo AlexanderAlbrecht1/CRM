@@ -1,9 +1,9 @@
 <mat-card class="user-detail-header">
   <mat-card-content>
-    <img class="profil-pic" src="./assets/img/Avatar.svg" alt="" />
+    <img (click)="showUserObject()" class="profil-pic" src="./assets/img/Avatar.svg" alt="" />
     <div>
-      <h2>Voller Name</h2>
-      <p>hier steht die Mail</p>
+      <h2>{{user.firstName}}  {{user.lastName}}</h2>
+      <p>{{ user.email }}</p>
     </div>
   </mat-card-content>
 </mat-card>
@@ -13,7 +13,7 @@
     <mat-card-title>Address</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <p> Straße <br>
-    PLZ und ORT</p>
+    <p> {{user.street}} <br>
+      {{user.zipCode}} {{user.city}}</p>
   </mat-card-content>
 </mat-card>
