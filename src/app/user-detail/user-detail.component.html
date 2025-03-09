@@ -1,6 +1,15 @@
 <mat-card class="user-detail-header">
   <mat-card-content>
-    <img (click)="showUserObject()" class="profil-pic" src="./assets/img/Avatar.svg" alt="" />
+    <button [matMenuTriggerFor]="headerMenu" class="more-btn" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu #headerMenu="matMenu">
+      <button mat-menu-item (click)="openEditHeaderDialog(user)">Edit</button>
+      <!-- <button mat-menu-item>Item 2</button> -->
+    </mat-menu>
+
+    <img class="profil-pic" src="./assets/img/Avatar.svg" alt="" />
     <div>
       <h2>{{user.firstName}}  {{user.lastName}}</h2>
       <p>{{ user.email }}</p>
@@ -13,6 +22,15 @@
     <mat-card-title>Address</mat-card-title>
   </mat-card-header>
   <mat-card-content>
+    <button [matMenuTriggerFor]="menu" class="more-btn" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="openEditAddressDialog(user)">Edit</button>
+      <!-- <button mat-menu-item>Item 2</button> -->
+    </mat-menu>
+
     <p> {{user.street}} <br>
       {{user.zipCode}} {{user.city}}</p>
   </mat-card-content>

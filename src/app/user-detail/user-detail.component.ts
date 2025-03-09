@@ -6,11 +6,16 @@ import { User } from '../../models/user.class';
 import { doc, getDoc } from "firebase/firestore";
 import { inject } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
+import {MatIconModule} from '@angular/material/icon';
+import { EditAddressDialogComponent } from '../edit-address-dialog/edit-address-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import {MatMenuModule} from '@angular/material/menu';
+import { EditHeadDialogComponent } from '../edit-head-dialog/edit-head-dialog.component';
 
 @Component({
   selector: 'app-user-detail',
   standalone: true,
-  imports: [MatCardModule],
+  imports: [MatCardModule, MatIconModule,MatMenuModule],
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.scss'
 })
@@ -20,7 +25,7 @@ export class UserDetailComponent {
   singleUserId = '';
   firestore = inject(Firestore);
 
-  constructor(private route:ActivatedRoute, private firebaseService: FirebaseService){}
+  constructor(private route:ActivatedRoute, private firebaseService: FirebaseService, public dialog: MatDialog){}
 
   async ngOnInit() {
     this.getId();
@@ -37,8 +42,16 @@ export class UserDetailComponent {
     this.singleUserId = this.route.snapshot.paramMap.get('id') || '';
   }
 
-  showUserObject() {
-    console.log(this.user);
+  openEditAddressDialog(singleUser:any):void {
+    const dialogRef = this.dialog.open(EditAddressDialogComponent, {
+        });
+        dialogRef.componentInstance.user = singleUser;
+    console.log(singleUser);
 
+  }
+
+  openEditHeaderDialog(singleUser:any):void {
+    const dialogRef = this.dialog.open(EditHeadDialogComponent, singleUser);
+    console.log(singleUser);
   }
 }
