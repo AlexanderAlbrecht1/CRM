@@ -36,6 +36,7 @@ export class UserDetailComponent {
     const docRef = doc(this.firestore, 'user', id);
     this.user = await getDoc(docRef);
     this.user = this.user.data();
+    this.user.id = this.singleUserId;
   }
 
   getId() {
