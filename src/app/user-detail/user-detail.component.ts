@@ -65,7 +65,8 @@ export class UserDetailComponent {
   }
 
   openEditHeaderDialog(singleUser:any):void {
-    const dialogRef = this.dialog.open(EditHeadDialogComponent, singleUser);
+    const dialogRef = this.dialog.open(EditHeadDialogComponent);
+    dialogRef.componentInstance.user = singleUser;
     console.log(singleUser);
   }
 }
