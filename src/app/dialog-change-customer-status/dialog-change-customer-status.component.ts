@@ -72,7 +72,19 @@ export class DialogChangeCustomerStatusComponent {
         existing: true,
         vip: false,
       });
-      this.closeDialog();
-    }
+    } else if (this.selectedValue === 'V.I.P.') {
+      await updateDoc(custStatRef, {
+        new: false,
+        existing: false,
+        vip: true,
+      });
+    } else if (this.selectedValue === 'Neukunde') {
+      await updateDoc(custStatRef, {
+        new: true,
+        existing: false,
+        vip: false,
+      });
+    };
+    this.closeDialog();
   }
 }
