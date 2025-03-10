@@ -12,16 +12,19 @@ import { doc, getDoc } from 'firebase/firestore';
 export class FirebaseService {
   customer: Customer[] = [];
   ExistingCustomer: Customer[] = [];
+  vipCustomer: Customer[] = [];
   singleCustomer: any = {};
   firestore = inject(Firestore);
 
   unsubNewCustomer;
   unsubExistingCustomer;
+  unsubVipCustomer;
   // unsubSingleUser;
 
   constructor() {
     this.unsubNewCustomer = this.subNewCustomerList();
     this.unsubExistingCustomer = this.subExistingCustomerList();
+    this.unsubVipCustomer = this.subVipCustomerList();
     // this.unsubSingleUser = this.subSingleUser(this.user.id);
   }
 
@@ -61,6 +64,23 @@ export class FirebaseService {
         const singleCustomer = this.setUserObject(element.data(), element.id)
         if (singleCustomer.existing === true) {
           this.ExistingCustomer.push(singleCustomer);
+          console.log(singleCustomer.new);
+
+        }
+        // console.log(element.data());
+      });
+    });
+  }
+
+  subVipCustomerList() {
+    const q = query(this.getCustomerRef());
+    return onSnapshot(q, (list) => {
+      this.vipCustomer = [];
+
+      list.forEach((element) => {
+        const singleCustomer = this.setUserObject(element.data(), element.id)
+        if (singleCustomer.vip === true) {
+          this.vipCustomer.push(singleCustomer);
           console.log(singleCustomer.new);
 
         }

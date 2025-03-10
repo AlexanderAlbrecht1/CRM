@@ -1,1 +1,20 @@
-<p>vip-customers-overview works!</p>
+<mat-card>
+  <mat-card-content>
+    <table class="customer-table">
+      <tr>
+        <th>Name</th>
+        <th>Vorname</th>
+        <th>Email</th>
+        <th>Stadt</th>
+      </tr>
+      <tr *ngFor="let customer of getVipCustomerList()" [routerLink]="['/customer/' + customer.id]">
+        <td>{{customer.lastName}}</td>
+        <td>{{customer.firstName}}</td>
+        <td>{{customer.email}}</td>
+        <td>{{customer.city}}</td>
+      </tr>
+
+
+    </table>
+  </mat-card-content>
+</mat-card>
