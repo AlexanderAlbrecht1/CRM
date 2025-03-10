@@ -1,5 +1,5 @@
 import { FirebaseService } from './../services/firebase.service';
-import { User } from './../../models/user.class';
+import { Customer } from '../../models/customer.class';
 import { Component, Input } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -41,27 +41,30 @@ export class DialogAddUserComponent {
   ) {}
 
   // firestore = inject(Firestore);
-  user = new User();
+  customer = new Customer();
   birthDate: Date = new Date('');
   loading: boolean = false;
 
-  async saveUser() {
+  async saveCustomer() {
     this.loading = true;
-    this.user.birthDate = this.birthDate.getTime();
-    console.log('user is', this.user);
+    this.customer.birthDate = this.birthDate.getTime();
+    // console.log('user is', this.user);
 
-    let user: User = {
-      firstName: this.user.firstName,
-      lastName: this.user.lastName,
-      birthDate: this.user.birthDate,
-      street: this.user.street,
-      address2: this.user.address2,
-      city: this.user.city,
-      zipCode: this.user.zipCode,
-      email: this.user.email,
-      id: this.user.id
+    let customer: Customer = {
+      firstName: this.customer.firstName,
+      lastName: this.customer.lastName,
+      birthDate: this.customer.birthDate,
+      street: this.customer.street,
+      address2: this.customer.address2,
+      city: this.customer.city,
+      zipCode: this.customer.zipCode,
+      email: this.customer.email,
+      id: this.customer.id,
+      new: this.customer.new,
+      existing: this.customer.existing,
+      vip: this.customer.vip,
     };
-    this.firebaseService.addUser(user);
+    this.firebaseService.addCustomer(customer);
     this.loading = false;
     this.closeDialog();
   }

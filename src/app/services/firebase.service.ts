@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { inject } from '@angular/core';
 import { Firestore, collection, addDoc } from '@angular/fire/firestore';
-import { User } from '../../models/user.class';
+import { Customer } from '../../models/customer.class';
 import { query } from '@angular/fire/firestore';
 import { onSnapshot } from '@angular/fire/firestore';
 import { doc, getDoc } from 'firebase/firestore';
@@ -10,20 +10,20 @@ import { doc, getDoc } from 'firebase/firestore';
   providedIn: 'root',
 })
 export class FirebaseService {
-  user: User[] = [];
-  singleUser: any = {};
+  customer: Customer[] = [];
+  singleCustomer: any = {};
   firestore = inject(Firestore);
 
-  unsubUser;
+  unsubCustomer;
   // unsubSingleUser;
 
   constructor() {
-    this.unsubUser = this.subUserList();
+    this.unsubCustomer = this.subCustomerList();
     // this.unsubSingleUser = this.subSingleUser(this.user.id);
   }
 
-  async addUser(item: User) {
-    const docRef = await addDoc(this.getUserRef(), item)
+  async addCustomer(item: Customer) {
+    const docRef = await addDoc(this.getCustomerRef(), item)
       .catch((err) => {
         console.log(err, 'dat hat nich jeklappt!');
       })
@@ -32,12 +32,12 @@ export class FirebaseService {
       });
   }
 
-  subUserList() {
-    const q = query(this.getUserRef());
+  subCustomerList() {
+    const q = query(this.getCustomerRef());
     return onSnapshot(q, (list) => {
-      this.user = [];
+      this.customer = [];
       list.forEach((element) => {
-        this.user.push(this.setUserObject(element.data(), element.id));
+        this.customer.push(this.setUserObject(element.data(), element.id));
         // console.log(element.data());
       });
     });
@@ -52,7 +52,7 @@ export class FirebaseService {
   //   // return this.user;
   // }
 
-  setUserObject(obj: any, id: string): User {
+  setUserObject(obj: any, id: string): Customer {
     return {
       id: id || '',
       firstName: obj.firstName || '',
@@ -63,10 +63,13 @@ export class FirebaseService {
       city: obj.city || '',
       zipCode: obj.zipCode || '',
       email: obj.email || '',
+      new: obj.new || true,
+      existing: obj.existing || false,
+      vip: obj.vip || false,
     };
   }
 
-  getUserRef() {
-    return collection(this.firestore, 'user');
+  getCustomerRef() {
+    return collection(this.firestore, 'customer');
   }
 }

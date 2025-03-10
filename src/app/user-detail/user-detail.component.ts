@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { FirebaseService } from '../services/firebase.service';
-import { User } from '../../models/user.class';
+import { Customer } from '../../models/customer.class';
 import { doc, getDoc, onSnapshot } from "firebase/firestore";
 import { inject } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
@@ -21,14 +21,14 @@ import { EditHeadDialogComponent } from '../edit-head-dialog/edit-head-dialog.co
 })
 export class UserDetailComponent {
 
-  user: any = {};
-  singleUserId = '';
+  customer: any = {};
+  singleCustomerId = '';
   firestore = inject(Firestore);
 
-  unsubUser;
+  unsubCustomer;
 
   constructor(private route:ActivatedRoute, private firebaseService: FirebaseService, public dialog: MatDialog){
-    this.unsubUser = this.subSingleUser();
+    this.unsubCustomer = this.subSingleCustomer();
   }
 
   async ngOnInit() {
@@ -36,13 +36,13 @@ export class UserDetailComponent {
     // this.getSingleUser(this.singleUserId)
   }
 
-  async subSingleUser() {
+  async subSingleCustomer() {
     this.getId()
-    const docRef = doc(this.firestore, 'user', this.singleUserId);
-    return onSnapshot(doc(this.firestore, "user", this.singleUserId), (doc) => {
+    const docRef = doc(this.firestore, 'user', this.singleCustomerId);
+    return onSnapshot(doc(this.firestore, "user", this.singleCustomerId), (doc) => {
       // this.user = getDoc(docRef);
-      this.user = doc.data();
-      this.user.id = this.singleUserId;
+      this.customer = doc.data();
+      this.customer.id = this.singleCustomerId;
     });
   }
   // async getSingleUser(id:string) {
@@ -53,20 +53,20 @@ export class UserDetailComponent {
   // }
 
   getId() {
-    this.singleUserId = this.route.snapshot.paramMap.get('id') || '';
+    this.singleCustomerId = this.route.snapshot.paramMap.get('id') || '';
   }
 
-  openEditAddressDialog(singleUser:any):void {
+  openEditAddressDialog(singleCustomer:any):void {
     const dialogRef = this.dialog.open(EditAddressDialogComponent, {
         });
-        dialogRef.componentInstance.user = singleUser;
-    console.log(singleUser);
+        dialogRef.componentInstance.customer = singleCustomer;
+    console.log(singleCustomer);
 
   }
 
-  openEditHeaderDialog(singleUser:any):void {
+  openEditHeaderDialog(singleCustomer:any):void {
     const dialogRef = this.dialog.open(EditHeadDialogComponent);
-    dialogRef.componentInstance.user = singleUser;
-    console.log(singleUser);
+    dialogRef.componentInstance.customer = singleCustomer;
+    console.log(singleCustomer);
   }
 }

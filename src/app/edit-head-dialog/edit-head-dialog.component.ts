@@ -1,4 +1,4 @@
-import { User } from './../../models/user.class';
+import { Customer } from '../../models/customer.class';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -38,7 +38,7 @@ import {
   styleUrl: './edit-head-dialog.component.scss',
 })
 export class EditHeadDialogComponent {
-  user!: User;
+  customer!: Customer;
   firstName: string = '';
   lastName: string = '';
   email: string = '';
@@ -51,10 +51,10 @@ export class EditHeadDialogComponent {
   ) {}
 
   ngOnInit() {
-    this.firstName = this.user.firstName;
-    this.lastName = this.user.lastName;
-    this.email = this.user.email;
-    this.birthDate = this.user.birthDate;
+    this.firstName = this.customer.firstName;
+    this.lastName = this.customer.lastName;
+    this.email = this.customer.email;
+    this.birthDate = this.customer.birthDate;
   }
 
   closeDialog(): void {

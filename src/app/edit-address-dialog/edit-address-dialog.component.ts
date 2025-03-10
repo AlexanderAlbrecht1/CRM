@@ -1,4 +1,4 @@
-import { User } from './../../models/user.class';
+import { Customer} from '../../models/customer.class';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -31,7 +31,7 @@ import { Firestore } from '@angular/fire/firestore';
 })
 export class EditAddressDialogComponent {
 
-  user!: User;
+  customer!: Customer;
   street: string = '';
   city: string = '';
   zipCode: number = 0;
@@ -43,9 +43,9 @@ export class EditAddressDialogComponent {
   ) {}
 
   ngOnInit() {
-    this.street = this.user.street;
-    this.zipCode = this.user.zipCode;
-    this.city = this.user.city;
+    this.street = this.customer.street;
+    this.zipCode = this.customer.zipCode;
+    this.city = this.customer.city;
   }
 
   closeDialog(): void {

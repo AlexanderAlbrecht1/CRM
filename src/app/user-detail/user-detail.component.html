@@ -5,21 +5,21 @@
     </button>
 
     <mat-menu #headerMenu="matMenu">
-      <button mat-menu-item (click)="openEditHeaderDialog(user)">Edit</button>
-      <!-- <button mat-menu-item>Item 2</button> -->
+      <button mat-menu-item (click)="openEditHeaderDialog(customer)">Kopdaten bearbeiten</button>
+      <button mat-menu-item>Kategorie ändern</button>
     </mat-menu>
 
     <img class="profil-pic" src="./assets/img/Avatar.svg" alt="" />
     <div>
-      <h2>{{user.firstName}}  {{user.lastName}}</h2>
-      <p>{{ user.email }}</p>
+      <h2>{{customer.firstName}}  {{customer.lastName}}</h2>
+      <p>{{ customer.email }}</p>
     </div>
   </mat-card-content>
 </mat-card>
 
 <mat-card class="mt-32">
   <mat-card-header>
-    <mat-card-title>Address</mat-card-title>
+    <mat-card-title>Adresse</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <button [matMenuTriggerFor]="menu" class="more-btn" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
@@ -27,11 +27,11 @@
     </button>
 
     <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="openEditAddressDialog(user)">Edit</button>
-      <!-- <button mat-menu-item>Item 2</button> -->
+      <button mat-menu-item (click)="openEditAddressDialog(customer)">Adressdaten bearbeiten</button>
+      <button mat-menu-item>abweichende Adressdaten anlegen</button>
     </mat-menu>
 
-    <p> {{user.street}} <br>
-      {{user.zipCode}} {{user.city}}</p>
+    <p> {{customer.street}} <br>
+      {{customer.zipCode}} {{customer.city}}</p>
   </mat-card-content>
 </mat-card>

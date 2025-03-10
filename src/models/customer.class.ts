@@ -1,4 +1,4 @@
-export class User {
+export class Customer {
   firstName: string;
   lastName: string;
   birthDate: number;
@@ -8,6 +8,10 @@ export class User {
   zipCode: number;
   email: string;
   id: string;
+  new: boolean;
+  existing: boolean;
+  vip: boolean;
+
 
   constructor (obj?: any) {
     this.firstName = obj? obj.firstName : '';
@@ -19,5 +23,8 @@ export class User {
     this.zipCode = obj? obj.zipCode : '';
     this.email = obj? obj.email : '';
     this.id = obj? obj.id : '';
+    this.new = obj? obj.new : true;
+    this.existing = obj? obj.existing : false;
+    this.vip = obj? obj.vip : false;
 }
 }
