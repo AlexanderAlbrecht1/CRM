@@ -15,6 +15,7 @@ export class FirebaseService {
   vipCustomer: Customer[] = [];
   singleCustomer: any = {};
   firestore = inject(Firestore);
+  taskList:any = [];
 
   unsubNewCustomer;
   unsubExistingCustomer;
@@ -36,6 +37,13 @@ export class FirebaseService {
       .then((docRef) => {
         console.log('Document written with ID: ', docRef?.id);
       });
+  }
+
+  async addTask(newTask:string) {
+    const docRef = await addDoc(collection(this.firestore, "tasks"), {
+      task : newTask
+    });
+    console.log("Document written with ID: ", docRef.id);
   }
 
   subNewCustomerList() {
@@ -89,15 +97,6 @@ export class FirebaseService {
     });
   }
 
-  // async subSingleUser(docId: string) {
-  //   const docRef = doc(this.firestore, 'user', docId);
-  //   this.singleUser = await getDoc(docRef);
-  //   this.user = [];
-  //   this.user.push(this.setUserObject(this.singleUser.data(), docId));
-  //   console.log('Daten aus Firebaseservices:', this.user);
-  //   // return this.user;
-  // }
-
   setUserObject(obj: any, id: string): Customer {
     return {
       id: id || '',
@@ -117,5 +116,9 @@ export class FirebaseService {
 
   getCustomerRef() {
     return collection(this.firestore, 'customer');
+  }
+
+  getTaskRef() {
+    return collection(this.firestore, 'tasks');
   }
 }

@@ -1,1 +1,19 @@
-<p>simple-opl works!</p>
+<mat-card>
+  <mat-card-content class="single-task">
+    <mat-checkbox class="example-margin" [(ngModel)]="checked"></mat-checkbox>
+    <p [ngStyle]="{ 'text-decoration': checked ? 'line-through' : 'none' }" >Hier steht die erste Aufgabe</p>
+  </mat-card-content>
+</mat-card>
+
+<div class="add-task-button">
+  <button
+    mat-fab
+    color="primary"
+    matTooltip="Neuen Kuden hinzufügen"
+    matTooltipPosition="above"
+    aria-label="Example icon button with a delete icon"
+    (click)="openDialog()"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
