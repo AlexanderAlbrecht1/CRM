@@ -42,7 +42,7 @@ export class EditHeadDialogComponent {
   firstName: string = '';
   lastName: string = '';
   email: string = '';
-  birthDate: number = 0;
+  birthDate!: number;
   firestore = inject(Firestore);
 
   constructor(
@@ -62,7 +62,7 @@ export class EditHeadDialogComponent {
   }
 
   async saveHead(user: any) {
-    const userAdressRef = doc(this.firestore, 'user', user.id);
+    const userAdressRef = doc(this.firestore, 'customer', user.id);
     await updateDoc(userAdressRef, {
       firstName: this.firstName,
       lastName: this.lastName,

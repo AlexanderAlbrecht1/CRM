@@ -53,7 +53,7 @@ export class EditAddressDialogComponent {
   }
 
   async saveAddress(user:any) {
-    const userAdressRef = doc(this.firestore, 'user', user.id);
+    const userAdressRef = doc(this.firestore, 'customer', user.id);
     await updateDoc(userAdressRef, {
       street : this.street,
       zipCode : this.zipCode,

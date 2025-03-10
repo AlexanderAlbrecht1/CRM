@@ -36,8 +36,14 @@ export class FirebaseService {
     const q = query(this.getCustomerRef());
     return onSnapshot(q, (list) => {
       this.customer = [];
+
       list.forEach((element) => {
-        this.customer.push(this.setUserObject(element.data(), element.id));
+        const singleCustomer = this.setUserObject(element.data(), element.id)
+        if (singleCustomer.new === true) {
+          this.customer.push(singleCustomer);
+          console.log(singleCustomer.new);
+
+        }
         // console.log(element.data());
       });
     });
@@ -63,9 +69,9 @@ export class FirebaseService {
       city: obj.city || '',
       zipCode: obj.zipCode || '',
       email: obj.email || '',
-      new: obj.new || true,
-      existing: obj.existing || false,
-      vip: obj.vip || false,
+      new: obj.new,
+      existing: obj.existing,
+      vip: obj.vip,
     };
   }
 
