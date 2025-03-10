@@ -6,6 +6,7 @@ import { NewCustomersOverviewComponent } from './new-customers-overview/new-cust
 import { ExistingCustomersOverviewComponent } from './existing-customers-overview/existing-customers-overview.component';
 import { VipCustomersOverviewComponent } from './vip-customers-overview/vip-customers-overview.component';
 import { OfferOverviewComponent } from './offer-overview/offer-overview.component';
+import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
 
 export const routes: Routes = [
   {path: '', component: DashboardComponent},
@@ -14,5 +15,5 @@ export const routes: Routes = [
   {path: 'existingCustomersOverview', component: ExistingCustomersOverviewComponent},
   {path: 'vipCustomersOverview', component: VipCustomersOverviewComponent},
   {path: 'offerOverview', component: OfferOverviewComponent},
-  {path: 'user/:id', component: UserDetailComponent}
+  {path: 'customer/:id', component: CustomerDetailComponent}
 ];

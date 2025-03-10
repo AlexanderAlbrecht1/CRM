@@ -1,0 +1,64 @@
+.add-user-button {
+  position: absolute;
+  right: 64px;
+  bottom: 64px;
+}
+
+button {
+  width: 48px;
+  height: 48px;
+  border-radius: 20px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.mat-mdc-card-content {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.customer-table {
+  width: 100%;
+  border-collapse: collapse;
+  >tr {
+    transform: scale(0.95);
+    border-bottom:1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    height: 40px;
+    transition: transform 0.3s ease-in-out;
+    &:hover {
+      transform: scale(1);
+      background-color: rgba(255, 255, 255, 0.1) ;
+    }
+    >th:first-child {
+      padding-left: 16px;
+    }
+    >td:first-child {
+      padding-left: 16px;
+    }
+  }
+  >tr:first-child {
+    cursor: unset;
+    transform: scale(.95);
+    transition: none;
+    &:hover {
+      background-color: unset;
+      transform: scale(.95);
+    }
+
+  }
+  >tr:last-child {
+    border-bottom: 0;
+  }
+  >tr:nth-child(1) {
+    >th {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 18px;
+      text-align: start;
+    }
+  }
+
+
+}
