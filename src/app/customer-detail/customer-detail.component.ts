@@ -11,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 import {MatMenuModule} from '@angular/material/menu';
 import { EditHeadDialogComponent } from '../edit-head-dialog/edit-head-dialog.component';
 import { FormsModule } from '@angular/forms';
+import { DialogChangeCustomerStatusComponent } from '../dialog-change-customer-status/dialog-change-customer-status.component';
 
 
 @Component({
@@ -70,6 +71,12 @@ export class CustomerDetailComponent {
 
   openEditHeaderDialog(singleCustomer:any):void {
     const dialogRef = this.dialog.open(EditHeadDialogComponent);
+    dialogRef.componentInstance.customer = singleCustomer;
+    console.log(singleCustomer);
+  }
+
+  openChangeCustomerStatusDialog(singleCustomer:any) {
+    const dialogRef = this.dialog.open(DialogChangeCustomerStatusComponent);
     dialogRef.componentInstance.customer = singleCustomer;
     console.log(singleCustomer);
   }

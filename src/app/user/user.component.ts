@@ -3,13 +3,13 @@ import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
-import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 import { MatDialog } from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
 import { FirebaseService } from '../services/firebase.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { UserDetailComponent } from '../user-detail/user-detail.component';
+import { DialogAddCustomerComponent } from '../dialog-add-customer/dialog-add-customer.component';
 
 
 @Component({
@@ -42,7 +42,7 @@ export class UserComponent {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogAddUserComponent, {
+    const dialogRef = this.dialog.open(DialogAddCustomerComponent, {
     });
   }
 }

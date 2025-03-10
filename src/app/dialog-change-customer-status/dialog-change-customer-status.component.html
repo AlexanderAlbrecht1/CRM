@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Kundenstatus ändern</h1>
+<mat-dialog-content>
+  <h2>Aktueller Kundenstatus: {{customerStatus}}</h2>
+
+  <h4>Neuen Kundenstatus festlegen</h4>
+  <mat-form-field>
+    <!-- <mat-label>Kundenstatus festlegen</mat-label> -->
+    <mat-select [(ngModel)]="selectedValue" name="status">
+      @for (status of stati; track status) {
+        <mat-option [value]="status.value">{{status.viewValue}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <!-- <p> Neuer Kundenstatus: {{selectedValue}} </p> -->
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button  mat-button (click)="closeDialog()">Cancel</button>
+  <button  mat-button  cdkFocusInitial (click)="saveNewStatus(customer)">Save</button>
+</mat-dialog-actions>

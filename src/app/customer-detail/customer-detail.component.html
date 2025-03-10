@@ -8,7 +8,7 @@
 
     <mat-menu #headerMenu="matMenu">
       <button mat-menu-item (click)="openEditHeaderDialog(customer)">Kopdaten bearbeiten</button>
-      <button mat-menu-item>Kundenart ändern</button>
+      <button mat-menu-item (click)="openChangeCustomerStatusDialog(customer)">Kundenstatus ändern</button>
     </mat-menu>
 
     <img class="profil-pic" src="./assets/img/Avatar.svg" alt="" />
