@@ -11,14 +11,17 @@ import { doc, getDoc } from 'firebase/firestore';
 })
 export class FirebaseService {
   customer: Customer[] = [];
+  ExistingCustomer: Customer[] = [];
   singleCustomer: any = {};
   firestore = inject(Firestore);
 
-  unsubCustomer;
+  unsubNewCustomer;
+  unsubExistingCustomer;
   // unsubSingleUser;
 
   constructor() {
-    this.unsubCustomer = this.subCustomerList();
+    this.unsubNewCustomer = this.subNewCustomerList();
+    this.unsubExistingCustomer = this.subExistingCustomerList();
     // this.unsubSingleUser = this.subSingleUser(this.user.id);
   }
 
@@ -32,7 +35,7 @@ export class FirebaseService {
       });
   }
 
-  subCustomerList() {
+  subNewCustomerList() {
     const q = query(this.getCustomerRef());
     return onSnapshot(q, (list) => {
       this.customer = [];
@@ -41,6 +44,23 @@ export class FirebaseService {
         const singleCustomer = this.setUserObject(element.data(), element.id)
         if (singleCustomer.new === true) {
           this.customer.push(singleCustomer);
+          console.log(singleCustomer.new);
+
+        }
+        // console.log(element.data());
+      });
+    });
+  }
+
+  subExistingCustomerList() {
+    const q = query(this.getCustomerRef());
+    return onSnapshot(q, (list) => {
+      this.ExistingCustomer = [];
+
+      list.forEach((element) => {
+        const singleCustomer = this.setUserObject(element.data(), element.id)
+        if (singleCustomer.existing === true) {
+          this.ExistingCustomer.push(singleCustomer);
           console.log(singleCustomer.new);
 
         }

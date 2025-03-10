@@ -34,7 +34,7 @@ export class NewCustomersOverviewComponent {
     private firebaseService: FirebaseService
   ) {}
 
-  getCustomerList(): Customer[] {
+  getNewCustomerList(): Customer[] {
     return this.firebaseService.customer;
     // console.log(this.firebaseService.user);
   }
