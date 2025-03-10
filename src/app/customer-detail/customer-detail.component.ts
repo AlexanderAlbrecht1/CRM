@@ -10,12 +10,13 @@ import { EditAddressDialogComponent } from '../edit-address-dialog/edit-address-
 import { MatDialog } from '@angular/material/dialog';
 import {MatMenuModule} from '@angular/material/menu';
 import { EditHeadDialogComponent } from '../edit-head-dialog/edit-head-dialog.component';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-customer-detail',
   standalone: true,
-  imports: [MatCardModule, MatIconModule,MatMenuModule],
+  imports: [MatCardModule, MatIconModule,MatMenuModule, FormsModule],
   templateUrl: './customer-detail.component.html',
   styleUrl: './customer-detail.component.scss'
 })
@@ -24,6 +25,7 @@ export class CustomerDetailComponent {
   customer: any = {};
   singleCustomerId = '';
   firestore = inject(Firestore);
+  customerType:string = ' ';
 
   unsubCustomer;
 
@@ -36,12 +38,21 @@ export class CustomerDetailComponent {
   //   // this.getSingleUser(this.singleUserId)
   // }
 
+
+
   async subSingleCustomer() {
     this.getId()
     const docRef = doc(this.firestore, 'customer', this.singleCustomerId);
     return onSnapshot(doc(this.firestore, "customer", this.singleCustomerId), (doc) => {
       this.customer = doc.data();
       this.customer.id = this.singleCustomerId;
+      if (this.customer.new === true) {
+        this.customerType = 'Neukunde'
+      } else if (this.customer.existing === true) {
+        this.customerType = "Bestandskunde"
+      } else if (this.customer.vip === true) {
+        this.customerType = "V.I.P."
+      }
     });
   }
 
