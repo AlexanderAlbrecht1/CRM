@@ -47,7 +47,7 @@ export class FirebaseService {
         const singleCustomer = this.setUserObject(element.data(), element.id)
         if (singleCustomer.new === true) {
           this.customer.push(singleCustomer);
-          console.log(singleCustomer.new);
+          // console.log(singleCustomer.new);
 
         }
         // console.log(element.data());
@@ -64,7 +64,7 @@ export class FirebaseService {
         const singleCustomer = this.setUserObject(element.data(), element.id)
         if (singleCustomer.existing === true) {
           this.ExistingCustomer.push(singleCustomer);
-          console.log(singleCustomer.new);
+          // console.log(singleCustomer.new);
 
         }
         // console.log(element.data());

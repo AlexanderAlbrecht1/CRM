@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OfferOverviewComponent } from './offer-overview.component';
+import { SimpleOPLComponent } from './simple-opl.component';
 
-describe('OfferOverviewComponent', () => {
-  let component: OfferOverviewComponent;
-  let fixture: ComponentFixture<OfferOverviewComponent>;
+describe('SimpleOPLComponent', () => {
+  let component: SimpleOPLComponent;
+  let fixture: ComponentFixture<SimpleOPLComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [OfferOverviewComponent]
+      imports: [SimpleOPLComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(OfferOverviewComponent);
+    fixture = TestBed.createComponent(SimpleOPLComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

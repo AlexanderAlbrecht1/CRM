@@ -45,6 +45,10 @@
       cursor: pointer;
       background-color: rgba(226, 226, 226, 0.1) ;
     }
+
+    &:focus {
+      background-color: rgba(17, 107, 94, 0.8);
+    }
   }
 }
 
