@@ -1,4 +1,4 @@
-<mat-card class="user-detail-header">
+<mat-card class="user-detail-header" [ngClass]="getCustomerClass()">
   <mat-card-content>
     <button [matMenuTriggerFor]="headerMenu" class="more-btn" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
       <mat-icon>more_vert</mat-icon>

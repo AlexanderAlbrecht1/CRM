@@ -12,12 +12,13 @@ import {MatMenuModule} from '@angular/material/menu';
 import { EditHeadDialogComponent } from '../edit-head-dialog/edit-head-dialog.component';
 import { FormsModule } from '@angular/forms';
 import { DialogChangeCustomerStatusComponent } from '../dialog-change-customer-status/dialog-change-customer-status.component';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-customer-detail',
   standalone: true,
-  imports: [MatCardModule, MatIconModule,MatMenuModule, FormsModule],
+  imports: [MatCardModule, MatIconModule,MatMenuModule, FormsModule, CommonModule],
   templateUrl: './customer-detail.component.html',
   styleUrl: './customer-detail.component.scss'
 })
@@ -79,6 +80,14 @@ export class CustomerDetailComponent {
     const dialogRef = this.dialog.open(DialogChangeCustomerStatusComponent);
     dialogRef.componentInstance.customer = singleCustomer;
     console.log(singleCustomer);
+  }
+
+  getCustomerClass() {
+    return {
+      'customer-type-1': this.customerType === 'Neukunde',
+      'customer-type-2': this.customerType === 'Bestandskunde',
+      'customer-type-3': this.customerType === 'V.I.P.',
+    };
   }
 
 }
