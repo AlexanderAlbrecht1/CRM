@@ -5,12 +5,12 @@
 
   <mat-form-field class="full-width">
     <mat-label>Was ist zu tun?</mat-label>
-    <textarea matInput></textarea>
+    <textarea [(ngModel)]="newTask.task" matInput></textarea>
   </mat-form-field>
 
   <mat-card-actions align="end">
-    <button class="mr-16" mat-button>Verwerfen</button>
-    <button mat-button>Sichern</button>
+    <button class="mr-16" mat-button (click)="closeDialog()">Verwerfen</button>
+    <button mat-button (click)="safeTask()">Sichern</button>
   </mat-card-actions>
 </mat-card>
 
