@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { inject } from '@angular/core';
-import { Firestore, collection, addDoc } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, updateDoc } from '@angular/fire/firestore';
 import { Customer } from '../../models/customer.class';
 import { query } from '@angular/fire/firestore';
 import { onSnapshot } from '@angular/fire/firestore';
 import { doc, getDoc } from 'firebase/firestore';
 import { Task } from '../../models/task.class';
+
 
 @Injectable({
   providedIn: 'root',
@@ -46,6 +47,13 @@ export class FirebaseService {
   async addTask(item: Task) {
     const docRef = await addDoc(collection(this.firestore, "tasks"), item) ;
     console.log("Document written with ID: ", docRef.id);
+  }
+
+  async updateTask(task: Task) {
+    const taskRef = doc(this.getTaskRef(),task.id)
+    await updateDoc(taskRef, {
+    done: task.done
+    });
   }
 
   subNewCustomerList() {

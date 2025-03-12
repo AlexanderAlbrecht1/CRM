@@ -9,6 +9,7 @@ import { DialogNewTaskComponent } from '../dialog-new-task/dialog-new-task.compo
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { FirebaseService } from '../services/firebase.service';
+import { Task } from '../../models/task.class';
 
 
 @Component({
@@ -21,6 +22,7 @@ import { FirebaseService } from '../services/firebase.service';
 export class SimpleOPLComponent {
 
   checked = false;
+  task!: Task;
 
   constructor(
       public dialog: MatDialog,
@@ -34,6 +36,10 @@ export class SimpleOPLComponent {
 
   getTaskList() {
     return this.firebaseService.task
+  }
+
+  updateTask(task: Task) {
+    this.firebaseService.updateTask(task)
   }
 
 }

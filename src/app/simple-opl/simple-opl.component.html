@@ -1,6 +1,6 @@
 <mat-card *ngFor="let task of getTaskList()">
   <mat-card-content class="single-task">
-    <mat-checkbox class="example-margin" [(ngModel)]="task.done"></mat-checkbox>
+    <mat-checkbox class="example-margin" [(ngModel)]="task.done" (change)="updateTask(task)"></mat-checkbox>
     <p [ngStyle]="{ 'text-decoration': task.done ? 'line-through' : 'none' }" >{{task.task}}</p>
   </mat-card-content>
 </mat-card>
