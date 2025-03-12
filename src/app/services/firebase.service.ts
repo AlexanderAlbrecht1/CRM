@@ -38,6 +38,18 @@ export class FirebaseService {
     return this.customer.length
   }
 
+  countExistingCostumers() {
+    return this.ExistingCustomer.length
+  }
+
+  countVipCostumers() {
+    return this.vipCustomer.length
+  }
+
+  countTasks() {
+    return this.task.length
+  }
+
   async addCustomer(item: Customer) {
     const docRef = await addDoc(this.getCustomerRef(), item)
       .catch((err) => {

@@ -12,15 +12,21 @@ import { FirebaseService } from '../services/firebase.service';
 export class DashboardComponent implements OnInit, OnDestroy {
   currentTime: string = '';
   currentDate: string = '';
+  currentWeekday: string = '';
   private intervalId: any;
-  newCustomers:any;
+  newCustomers: any;
+  existingCustomers: any;
+  vipCustomers: any;
+  tasks:any;
 
-  constructor(private firebaseService: FirebaseService) {};
+  constructor(private firebaseService: FirebaseService) {}
 
   ngOnInit(): void {
     this.updateDateTime();
     this.intervalId = setInterval(() => this.updateDateTime(), 1000);
-    this.getCountNewCustomers();
+    setTimeout(() => {
+      this.getCounters();
+    }, 2000);
   }
 
   updateDateTime(): void {
@@ -35,6 +41,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       month: '2-digit',
       year: 'numeric',
     });
+    this.currentWeekday = now.toLocaleDateString('de-DE', { weekday: 'long' });
   }
 
   ngOnDestroy(): void {
@@ -43,7 +50,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
   }
 
-  getCountNewCustomers() {
+  getCounters() {
     this.newCustomers = this.firebaseService.countCostumers();
+    this.existingCustomers = this.firebaseService.countExistingCostumers();
+    this.vipCustomers = this.firebaseService.countVipCostumers();
+    this.tasks = this.firebaseService.countTasks();
   }
 }
