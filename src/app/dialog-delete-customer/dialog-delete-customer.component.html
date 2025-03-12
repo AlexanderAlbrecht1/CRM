@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Aufgabe löschen</h2>
+<mat-dialog-content class="mat-typography">
+  <p>Du bist dabei den Kunden inklusiver aller dazugehörigen Daten unwiederruflich zu löschen. <br>
+  <br>
+  <i>"{{customer.firstName}} {{customer.lastName}}"</i> <br>
+  <br>
+  Bist du dir sicher?</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Abbrechen</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="deleteCustomer(customer)">Löschen</button>
+</mat-dialog-actions>
+

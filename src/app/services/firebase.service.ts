@@ -160,8 +160,10 @@ export class FirebaseService {
 
   async deleteTask(id:string) {
     await deleteDoc(doc(this.getTaskRef(), id));
-    console.log('is was passiert');
+  }
 
+  async deleteCustomer(id:string) {
+    await deleteDoc(doc(this.getCustomerRef(), id));
   }
 
   getCustomerRef() {

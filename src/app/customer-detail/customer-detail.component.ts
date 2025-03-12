@@ -13,6 +13,7 @@ import { EditHeadDialogComponent } from '../edit-head-dialog/edit-head-dialog.co
 import { FormsModule } from '@angular/forms';
 import { DialogChangeCustomerStatusComponent } from '../dialog-change-customer-status/dialog-change-customer-status.component';
 import { CommonModule } from '@angular/common';
+import { DialogDeleteCustomerComponent } from '../dialog-delete-customer/dialog-delete-customer.component';
 
 
 @Component({
@@ -62,12 +63,17 @@ export class CustomerDetailComponent {
     this.singleCustomerId = this.route.snapshot.paramMap.get('id') || '';
   }
 
+  openDeleteCustomerDialog(customer:any) {
+    const dialogRef = this.dialog.open(DialogDeleteCustomerComponent, {
+    });
+    dialogRef.componentInstance.customer = customer;
+  }
+
   openEditAddressDialog(singleCustomer:any):void {
     const dialogRef = this.dialog.open(EditAddressDialogComponent, {
         });
         dialogRef.componentInstance.customer = singleCustomer;
     console.log(singleCustomer);
-
   }
 
   openEditHeaderDialog(singleCustomer:any):void {
