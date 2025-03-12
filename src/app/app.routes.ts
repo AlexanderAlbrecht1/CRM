@@ -5,6 +5,7 @@ import { ExistingCustomersOverviewComponent } from './existing-customers-overvie
 import { VipCustomersOverviewComponent } from './vip-customers-overview/vip-customers-overview.component';
 import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
 import { SimpleOPLComponent } from './simple-opl/simple-opl.component';
+import { ImprintComponent } from './imprint/imprint.component';
 
 export const routes: Routes = [
   {path: '', component: DashboardComponent},
@@ -13,5 +14,6 @@ export const routes: Routes = [
   {path: 'existingCustomersOverview', component: ExistingCustomersOverviewComponent},
   {path: 'vipCustomersOverview', component: VipCustomersOverviewComponent},
   {path: 'OPL', component: SimpleOPLComponent},
-  {path: 'customer/:id', component: CustomerDetailComponent}
+  {path: 'customer/:id', component: CustomerDetailComponent},
+  {path: 'imprint', component: ImprintComponent}
 ];

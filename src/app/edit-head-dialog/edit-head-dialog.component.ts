@@ -42,7 +42,7 @@ export class EditHeadDialogComponent {
   firstName: string = '';
   lastName: string = '';
   email: string = '';
-  birthDate!: number;
+  phone!: string;
   firestore = inject(Firestore);
 
   constructor(
@@ -54,7 +54,7 @@ export class EditHeadDialogComponent {
     this.firstName = this.customer.firstName;
     this.lastName = this.customer.lastName;
     this.email = this.customer.email;
-    this.birthDate = this.customer.birthDate;
+    this.phone = this.customer.phone;
   }
 
   closeDialog(): void {
@@ -67,7 +67,7 @@ export class EditHeadDialogComponent {
       firstName: this.firstName,
       lastName: this.lastName,
       email: this.email,
-      birthDate: this.birthDate,
+      phone: this.phone,
     });
     this.closeDialog();
   }

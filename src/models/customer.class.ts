@@ -1,7 +1,7 @@
 export class Customer {
   firstName: string;
   lastName: string;
-  birthDate: number;
+  phone: string;
   street: string;
   address2 : string;
   city: string;
@@ -16,7 +16,7 @@ export class Customer {
   constructor (obj?: any) {
     this.firstName = obj? obj.firstName : '';
     this.lastName = obj? obj.lastName : '';
-    this.birthDate = obj? obj.birthDate : '';
+    this.phone = obj? obj.phone : '';
     this.street = obj? obj.street : '';
     this.address2 = obj? obj.address2 : '';
     this.city = obj? obj.city : '';

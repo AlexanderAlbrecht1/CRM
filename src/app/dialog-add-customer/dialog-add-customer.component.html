@@ -25,15 +25,12 @@
     </mat-form-field>
   </div>
 
-  <div>
-    <mat-form-field appearance="outline">
-      <mat-label>Gburtsdatum auswählen</mat-label>
-      <input [disabled]="loading" [(ngModel)]="birthDate" matInput [matDatepicker]="picker">
-      <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Telefonnumer</mat-label>
+      <input [(ngModel)]="customer.phone" type="tel" matInput>
     </mat-form-field>
-  </div>
+
 
       <p>
         <mat-form-field appearance="outline" class="example-full-width full-width">

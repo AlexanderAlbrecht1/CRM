@@ -41,18 +41,18 @@ export class DialogAddCustomerComponent {
 
   // firestore = inject(Firestore);
   customer = new Customer();
-  birthDate: Date = new Date('');
+  // phone: Date = new Date('');
   loading: boolean = false;
 
   async saveCustomer() {
     this.loading = true;
-    this.customer.birthDate = this.birthDate.getTime();
+    // this.customer.phone = this.phone.getTime();
     // console.log('user is', this.user);
 
     let customer: Customer = {
       firstName: this.customer.firstName,
       lastName: this.customer.lastName,
-      birthDate: this.customer.birthDate,
+      phone: this.customer.phone,
       street: this.customer.street,
       address2: this.customer.address2,
       city: this.customer.city,
@@ -64,6 +64,8 @@ export class DialogAddCustomerComponent {
       vip: this.customer.vip,
     };
     this.firebaseService.addCustomer(customer);
+    console.log(customer.phone);
+
     this.loading = false;
     this.closeDialog();
   }

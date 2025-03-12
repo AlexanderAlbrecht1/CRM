@@ -154,7 +154,7 @@ export class FirebaseService {
       id: id || '',
       firstName: obj.firstName || '',
       lastName: obj.lastName || '',
-      birthDate: obj.birthDate || '',
+      phone: obj.phone || '',
       street: obj.street || '',
       address2: obj.address2 || '',
       city: obj.city || '',
