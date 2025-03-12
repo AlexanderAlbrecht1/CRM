@@ -40,15 +40,16 @@
     padding: 0 16px;
     gap: 16px;
     height: 48px;
+    border-radius: 0 20px 20px 0;
 
     &:hover {
       cursor: pointer;
       background-color: rgba(226, 226, 226, 0.1) ;
     }
 
-    &:focus {
-      background-color: rgba(17, 107, 94, 0.8);
-    }
+    // &:focus {
+    //   background-color: rgba(17, 107, 94, 0.8);
+    // }
   }
 }
 
@@ -56,4 +57,7 @@
 padding: 16px 56px;
 }
 
+.router-link-active {
+  background-color: rgba(17, 107, 94, 0.534);
+}
 
