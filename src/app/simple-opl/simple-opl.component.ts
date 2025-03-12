@@ -32,4 +32,8 @@ export class SimpleOPLComponent {
 
   }
 
+  getTaskList() {
+    return this.firebaseService.task
+  }
+
 }

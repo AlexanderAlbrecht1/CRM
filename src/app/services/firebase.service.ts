@@ -11,6 +11,7 @@ import { Task } from '../../models/task.class';
   providedIn: 'root',
 })
 export class FirebaseService {
+  task: Task[] = [];
   customer: Customer[] = [];
   ExistingCustomer: Customer[] = [];
   vipCustomer: Customer[] = [];
@@ -21,12 +22,14 @@ export class FirebaseService {
   unsubNewCustomer;
   unsubExistingCustomer;
   unsubVipCustomer;
+  unsubTask;
   // unsubSingleUser;
 
   constructor() {
     this.unsubNewCustomer = this.subNewCustomerList();
     this.unsubExistingCustomer = this.subExistingCustomerList();
     this.unsubVipCustomer = this.subVipCustomerList();
+    this.unsubTask = this.subTaskList();
     // this.unsubSingleUser = this.subSingleUser(this.user.id);
   }
 
@@ -95,6 +98,22 @@ export class FirebaseService {
       });
     });
   }
+  subTaskList() {
+    const q = query(this.getTaskRef());
+    return onSnapshot(q, (list) => {
+      this.task = [];
+
+      list.forEach((element) => {
+        const singleTask = this.setTaskObject(element.data())
+        // if (singleCustomer.vip === true) {
+          this.task.push(singleTask);
+        //   console.log(singleCustomer.new);
+
+        // }
+        console.log(element.data());
+      });
+    });
+  }
 
   setUserObject(obj: any, id: string): Customer {
     return {
@@ -111,6 +130,13 @@ export class FirebaseService {
       existing: obj.existing,
       vip: obj.vip,
     };
+  }
+
+  setTaskObject(obj:any):Task {
+    return {
+      task: obj.task || '',
+      done: false,
+    }
   }
 
   getCustomerRef() {
