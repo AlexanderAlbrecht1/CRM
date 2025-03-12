@@ -173,4 +173,8 @@ export class FirebaseService {
   getTaskRef() {
     return collection(this.firestore, 'tasks');
   }
+
+  async saveEditedTask(task:any) {
+
+  }
 }
