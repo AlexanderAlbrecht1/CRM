@@ -31,6 +31,7 @@ export class DialogNewTaskComponent {
 
   async safeTask() {
     let newTask: Task = {
+      id: this.newTask.id,
       task: this.newTask.task,
       done: false
     };

@@ -91,26 +91,36 @@ export class FirebaseService {
         const singleCustomer = this.setUserObject(element.data(), element.id)
         if (singleCustomer.vip === true) {
           this.vipCustomer.push(singleCustomer);
-          console.log(singleCustomer.new);
+          // console.log(singleCustomer.new);
 
         }
         // console.log(element.data());
       });
     });
   }
+
+  // subTaskList() {
+  //   const q = query(this.getTaskRef());
+  //   return onSnapshot(q, (list) => {
+  //     this.task = [];
+  //     list.forEach((element) => {
+  //       const singleTask = this.setTaskObject(element.data(), element.id)
+  //         this.task.push(singleTask);
+  //       console.log(element.data());
+  //     });
+  //   });
+  // }
+
   subTaskList() {
     const q = query(this.getTaskRef());
     return onSnapshot(q, (list) => {
       this.task = [];
-
       list.forEach((element) => {
-        const singleTask = this.setTaskObject(element.data())
-        // if (singleCustomer.vip === true) {
-          this.task.push(singleTask);
-        //   console.log(singleCustomer.new);
-
-        // }
-        console.log(element.data());
+        const data = element.data();
+        const id = element.id;
+        const singleTask = this.setTaskObject(data, id);
+        this.task.push(singleTask);
+        // console.log(singleTask);
       });
     });
   }
@@ -132,10 +142,11 @@ export class FirebaseService {
     };
   }
 
-  setTaskObject(obj:any):Task {
+  setTaskObject(obj:any, id: string):Task {
     return {
-      task: obj.task || '',
-      done: false,
+      task: obj.task,
+      done: obj.done,
+      id: id,
     }
   }
 
