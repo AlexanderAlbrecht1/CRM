@@ -1,3 +1,4 @@
+import { Task } from './../../models/task.class';
 import { Injectable } from '@angular/core';
 import { inject } from '@angular/core';
 import { Firestore, collection, addDoc, updateDoc } from '@angular/fire/firestore';
@@ -5,7 +6,6 @@ import { Customer } from '../../models/customer.class';
 import { query } from '@angular/fire/firestore';
 import { onSnapshot } from '@angular/fire/firestore';
 import { doc, getDoc, deleteDoc } from 'firebase/firestore';
-import { Task } from '../../models/task.class';
 
 
 @Injectable({
@@ -166,6 +166,13 @@ export class FirebaseService {
     await deleteDoc(doc(this.getCustomerRef(), id));
   }
 
+  async saveEditedTask(task:any) {
+    const taskRef = doc(this.getTaskRef(), task.id);
+        await updateDoc(taskRef, {
+          task: task.task
+        });
+  }
+
   getCustomerRef() {
     return collection(this.firestore, 'customer');
   }
@@ -174,7 +181,5 @@ export class FirebaseService {
     return collection(this.firestore, 'tasks');
   }
 
-  async saveEditedTask(task:any) {
 
-  }
 }

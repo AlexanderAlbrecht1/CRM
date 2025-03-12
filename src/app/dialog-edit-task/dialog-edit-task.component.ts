@@ -27,6 +27,7 @@ export class DialogEditTaskComponent {
 
   saveEditedTask(task:Task) {
     console.log(task.task);
+    this.firebaseService.saveEditedTask(task);
     this.closeDialog();
   }
 }
