@@ -4,7 +4,7 @@ import { Firestore, collection, addDoc, updateDoc } from '@angular/fire/firestor
 import { Customer } from '../../models/customer.class';
 import { query } from '@angular/fire/firestore';
 import { onSnapshot } from '@angular/fire/firestore';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, deleteDoc } from 'firebase/firestore';
 import { Task } from '../../models/task.class';
 
 
@@ -156,6 +156,12 @@ export class FirebaseService {
       done: obj.done,
       id: id,
     }
+  }
+
+  async deleteTask(id:string) {
+    await deleteDoc(doc(this.getTaskRef(), id));
+    console.log('is was passiert');
+
   }
 
   getCustomerRef() {

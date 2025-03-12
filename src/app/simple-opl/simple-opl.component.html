@@ -2,6 +2,11 @@
   <mat-card-content class="single-task">
     <mat-checkbox class="example-margin" [(ngModel)]="task.done" (change)="updateTask(task)"></mat-checkbox>
     <p [ngStyle]="{ 'text-decoration': task.done ? 'line-through' : 'none' }" >{{task.task}}</p>
+
+    <button class="del-task-btn" (click)="openDelDialog(task)" mat-icon-button color="warn" aria-label="Example icon button with a heart icon">
+      <mat-icon>delete</mat-icon>
+    </button>
+
   </mat-card-content>
 </mat-card>
 

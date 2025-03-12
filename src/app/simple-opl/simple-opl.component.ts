@@ -10,6 +10,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { FirebaseService } from '../services/firebase.service';
 import { Task } from '../../models/task.class';
+import { DialogDeleteTaskComponent } from '../dialog-delete-task/dialog-delete-task.component';
 
 
 @Component({
@@ -34,12 +35,17 @@ export class SimpleOPLComponent {
 
   }
 
+  openDelDialog(task: Task) {
+    const dialogRef = this.dialog.open(DialogDeleteTaskComponent, {});
+    dialogRef.componentInstance.task = task;
+  }
+
   getTaskList() {
     return this.firebaseService.task
   }
 
   updateTask(task: Task) {
-    this.firebaseService.updateTask(task)
+    this.firebaseService.updateTask(task);
   }
 
 }
