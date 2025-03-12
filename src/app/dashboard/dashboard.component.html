@@ -1,1 +1,37 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+  <h1>Begrüßungsformal je nach tageszeit</h1>
+
+  <mat-card>
+    <mat-card-content class="datetime-container">
+      <p class="time">{{ currentTime }}</p>
+      <p class="date">{{ currentDate }}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-content>Anzahl Aufgabe</mat-card-content>
+  </mat-card>
+
+  <div class="row">
+    <mat-card>
+      <mat-card-content>
+        <p>{{ newCustomers }} <br>
+          <br>Neukunden</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-content>
+        <p>{{ newCustomers }} <br>
+          <br>Bestandskunden</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-content>
+        <p>{{ newCustomers }} <br>
+          <br>V.I.P. Kunden</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

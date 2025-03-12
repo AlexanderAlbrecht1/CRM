@@ -34,6 +34,10 @@ export class FirebaseService {
     // this.unsubSingleUser = this.subSingleUser(this.user.id);
   }
 
+  countCostumers() {
+    return this.customer.length
+  }
+
   async addCustomer(item: Customer) {
     const docRef = await addDoc(this.getCustomerRef(), item)
       .catch((err) => {
