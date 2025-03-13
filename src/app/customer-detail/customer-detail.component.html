@@ -4,7 +4,7 @@
       <mat-icon>more_vert</mat-icon>
     </button>
 
-    <h1> {{customerType }}</h1>
+    <h1> {{customerType}}</h1>
 
     <mat-menu #headerMenu="matMenu">
       <button mat-menu-item (click)="openEditHeaderDialog(customer)">Kopdaten bearbeiten</button>
@@ -40,4 +40,8 @@
       {{customer.zipCode}} {{customer.city}}</p>
   </mat-card-content>
 </mat-card>
+
+<button class="back-btn" (click)="backToCustomerOverview(customerType)" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+  <mat-icon>arrow_back</mat-icon>
+</button>
 

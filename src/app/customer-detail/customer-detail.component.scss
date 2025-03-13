@@ -83,3 +83,16 @@ a {
   text-decoration: none;
   color: whitesmoke;
 }
+
+.back-btn {
+  position: absolute;
+  right: 64px;
+  bottom: 64px;
+  width: 48px;
+  height: 48px;
+  border-radius: 20px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
