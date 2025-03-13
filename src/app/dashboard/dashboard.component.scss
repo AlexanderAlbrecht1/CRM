@@ -30,6 +30,9 @@ mat-card-content {
   >p:nth-child(1) {
     font-size: 24px;
   }
+  >p:nth-child(2) {
+    text-align: center;
+  }
 }
 
 .datetime-container {
@@ -46,4 +49,10 @@ mat-card-content {
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+.hover {
+  &:hover {
+    cursor: pointer;
+  }
 }

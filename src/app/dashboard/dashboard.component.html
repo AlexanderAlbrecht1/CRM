@@ -14,7 +14,7 @@
       <mat-card-content class="logo-container"> </mat-card-content>
     </mat-card>
 
-    <mat-card>
+    <mat-card class="hover" (click)="goToTasks()">
       <mat-card-content>
         <p>{{ tasks }}</p>
         <p>offene Aufgaben</p>
@@ -23,7 +23,7 @@
   </div>
 
   <div class="row">
-    <mat-card>
+    <mat-card class="hover" (click)="goToNewCustomer()">
       <mat-card-content>
         <p>
           {{ newCustomers }}
@@ -32,14 +32,14 @@
       </mat-card-content>
     </mat-card>
 
-    <mat-card>
+    <mat-card class="hover" (click)="goToExistingCustomer()">
       <mat-card-content>
         <p>{{ existingCustomers }}</p>
         <p>Bestandskunden</p>
       </mat-card-content>
     </mat-card>
 
-    <mat-card>
+    <mat-card class="hover" (click)="goToVipCustomer()">
       <mat-card-content>
         <p>{{ vipCustomers }}</p>
         <p>V.I.P. Kunden</p>

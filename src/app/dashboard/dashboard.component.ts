@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { FirebaseService } from '../services/firebase.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,9 +18,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
   newCustomers: any;
   existingCustomers: any;
   vipCustomers: any;
-  tasks:any;
+  tasks: any;
 
-  constructor(private firebaseService: FirebaseService) {}
+  constructor(
+    private firebaseService: FirebaseService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.updateDateTime();
@@ -55,5 +59,21 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.existingCustomers = this.firebaseService.countExistingCostumers();
     this.vipCustomers = this.firebaseService.countVipCostumers();
     this.tasks = this.firebaseService.countTasks();
+  }
+
+  goToNewCustomer() {
+    this.router.navigate(['/newCustomersOverview']);
+  }
+
+  goToExistingCustomer() {
+    this.router.navigate(['/existingCustomersOverview']);
+  }
+
+  goToVipCustomer() {
+    this.router.navigate(['/vipCustomersOverview']);
+  }
+
+  goToTasks() {
+    this.router.navigate(['OPL']);
   }
 }
