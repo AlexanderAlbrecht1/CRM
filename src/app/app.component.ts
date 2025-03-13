@@ -14,4 +14,21 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 })
 export class AppComponent {
   title = 'CRM';
+  isDarkMode = false;
+
+  constructor() {
+    this.isDarkMode = localStorage.getItem('theme') === 'dark';
+    this.updateTheme();
+  }
+
+  toggleTheme() {
+    this.isDarkMode = !this.isDarkMode;
+    localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
+    this.updateTheme();
+  }
+
+  private updateTheme() {
+    document.body.classList.toggle('dark-mode', this.isDarkMode);
+    document.body.classList.toggle('light-mode', !this.isDarkMode);
+  }
 }

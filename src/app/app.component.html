@@ -35,6 +35,8 @@
           <mat-icon fontIcon="policy"></mat-icon>Impressum & Datenschutz
         </li>
       </ul>
+
+
     </mat-drawer>
 
     <div class="example-sidenav-content">
@@ -47,6 +49,9 @@
           fontIcon="menu"
         ></mat-icon>
         <span>Simple CRM</span>
+        <button class="toggle-btn" mat-button (click)="toggleTheme()">
+          <mat-icon>{{ isDarkMode ? 'dark_mode' : 'light_mode' }}</mat-icon>
+        </button>
       </mat-toolbar>
 
       <div class="router-container">
