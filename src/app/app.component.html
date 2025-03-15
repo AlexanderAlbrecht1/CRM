@@ -49,9 +49,20 @@
           fontIcon="menu"
         ></mat-icon>
         <span>Simple CRM</span>
+
         <button class="toggle-btn" mat-button (click)="toggleTheme()">
           <mat-icon>{{ isDarkMode ? 'dark_mode' : 'light_mode' }}</mat-icon>
         </button>
+
+        <section class="example-section">
+          <mat-slide-toggle
+              class="example-margin"
+              [checked]="isChecked"
+              [disabled]="toggleLanguage()">
+            Slide me!
+          </mat-slide-toggle>
+        </section>
+
       </mat-toolbar>
 
       <div class="router-container">

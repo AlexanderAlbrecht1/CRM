@@ -6,6 +6,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { environment } from '../enviroment';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideTranslateService } from '@ngx-translate/core';
+import { HttpLoaderFactory } from './services/translate-loader';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes),
@@ -15,5 +18,8 @@ export const appConfig: ApplicationConfig = {
       provideFirebaseApp(() => initializeApp(environment.firebase)),
     // ),
     provideFirestore(() => getFirestore()),
+    provideTranslateService({
+
+    })
   ],
 };

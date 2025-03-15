@@ -4,21 +4,29 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { TranslateModule } from '@ngx-translate/core';
+import { TranslationService } from './services/translation.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, MatToolbarModule, MatIconModule,MatSidenavModule, RouterLinkActive, RouterLink],
+  imports: [CommonModule, RouterOutlet, MatToolbarModule, MatIconModule,MatSidenavModule, RouterLinkActive, RouterLink, MatSlideToggleModule, TranslateModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+
   title = 'CRM';
   isDarkMode = false;
+  isChecked = false;
+  currentLanguage: string;
 
-  constructor() {
+  constructor(private translationService: TranslationService) {
     this.isDarkMode = localStorage.getItem('theme') === 'dark';
     this.updateTheme();
+    this.currentLanguage = this.translationService.currentLanguage;
+    this.isChecked = this.currentLanguage === 'de';
   }
 
   toggleTheme() {
@@ -30,5 +38,12 @@ export class AppComponent {
   private updateTheme() {
     document.body.classList.toggle('dark-mode', this.isDarkMode);
     document.body.classList.toggle('light-mode', !this.isDarkMode);
+  }
+
+  toggleLanguage() {
+    const newLang = this.currentLanguage === 'en' ? 'de' : 'en';
+    this.translationService.switchLanguage(newLang);
+    this.currentLanguage = newLang;
+    this.isChecked = newLang === 'de';
   }
 }

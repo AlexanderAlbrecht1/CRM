@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.updateDateTime();
-    this.intervalId = setInterval(() => this.updateDateTime(), 1000);
+    // this.intervalId = setInterval(() => this.updateDateTime(), 1000);
     setTimeout(() => {
       this.getCounters();
     }, 2000);
