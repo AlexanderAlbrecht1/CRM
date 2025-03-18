@@ -4,39 +4,38 @@
       <div class="logo-container"></div>
       <ul class="menu-items">
         <li routerLink="dashboard" routerLinkActive="router-link-active">
-          <mat-icon fontIcon="space_dashboard"></mat-icon>Dashboard
+          <mat-icon fontIcon="space_dashboard"></mat-icon
+          >{{ "menu.1" | translate }}
         </li>
         <li
           routerLink="newCustomersOverview"
           routerLinkActive="router-link-active"
         >
-          <mat-icon fontIcon="person"></mat-icon>Neukunden
+          <mat-icon fontIcon="person"></mat-icon>{{ "menu.2" | translate }}
         </li>
         <li
           routerLink="existingCustomersOverview"
           routerLinkActive="router-link-active"
         >
-          <mat-icon fontIcon="person"></mat-icon>Bestandskunden
+          <mat-icon fontIcon="person"></mat-icon>{{ "menu.3" | translate }}
         </li>
         <li
           routerLink="vipCustomersOverview"
           routerLinkActive="router-link-active"
         >
-          <mat-icon fontIcon="person"></mat-icon>V.I.P
+          <mat-icon fontIcon="person"></mat-icon>{{ "menu.4" | translate }}
         </li>
         <li routerLink="OPL" routerLinkActive="router-link-active">
-          <mat-icon fontIcon="list_alt"></mat-icon>Simple OPL
+          <mat-icon fontIcon="list_alt"></mat-icon>{{ "menu.5" | translate }}
         </li>
         <li
           class="imprint"
           routerLink="imprint"
           routerLinkActive="router-link-active"
         >
-          <mat-icon fontIcon="policy"></mat-icon>Impressum & Datenschutz
+          <mat-icon fontIcon="policy"></mat-icon>{{ "menu.6" | translate }}
         </li>
       </ul>
-
-
     </mat-drawer>
 
     <div class="example-sidenav-content">
@@ -51,18 +50,18 @@
         <span>Simple CRM</span>
 
         <button class="toggle-btn" mat-button (click)="toggleTheme()">
-          <mat-icon>{{ isDarkMode ? 'dark_mode' : 'light_mode' }}</mat-icon>
+          <mat-icon>{{ isDarkMode ? "dark_mode" : "light_mode" }}</mat-icon>
         </button>
 
-        <section class="example-section">
-          <mat-slide-toggle
-              class="example-margin"
-              [checked]="isChecked"
-              [disabled]="toggleLanguage()">
-            Slide me!
-          </mat-slide-toggle>
-        </section>
-
+        <label class="switch">
+          <input
+            id="language-toggle"
+            type="checkbox"
+            [checked]="isChecked"
+            (change)="toggleLanguage()"
+          />
+          <span class="slider round"></span>
+        </label>
       </mat-toolbar>
 
       <div class="router-container">

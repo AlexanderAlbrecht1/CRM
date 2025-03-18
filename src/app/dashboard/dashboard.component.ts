@@ -2,11 +2,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { FirebaseService } from '../services/firebase.service';
 import { Router } from '@angular/router';
+import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [MatCardModule],
+  imports: [MatCardModule, TranslatePipe, TranslateModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
@@ -27,7 +29,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.updateDateTime();
-    // this.intervalId = setInterval(() => this.updateDateTime(), 1000);
+    this.intervalId = setInterval(() => this.updateDateTime(), 1000);
     setTimeout(() => {
       this.getCounters();
     }, 2000);

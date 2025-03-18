@@ -1,0 +1,17 @@
+{
+  "menu": {
+    "1":"Dashboard",
+    "2":"New Customers",
+    "3":"Existing Customers",
+    "4":"V.I.P. Customers",
+    "5": "Simple Tasks",
+    "6": "Imprint & Legal Notice"
+  },
+  "dashboard": {
+    "header":"Welcoome at Simple CRM!",
+    "task":"opne Tasks",
+    "2":"New Customers",
+    "3":"Existing Customers",
+    "4":"V.I.P. Customers"
+  }
+}
